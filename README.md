@@ -1,98 +1,280 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# VoejaTesteBackend
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+API REST desenvolvida com **NestJS** para gerenciamento de tarefas.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Este projeto foi desenvolvido como parte do teste técnico da **VOEJA Tech**. A API permite realizar operações de CRUD (Create, Read, Update e Delete) em tarefas, utilizando **MongoDB Atlas** para persistência dos dados e **Swagger** para documentação da API.
 
-## Description
+---
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+# Tecnologias utilizadas
 
-## Project setup
+* **NestJS** - Framework para construção da API.
+
+  * https://docs.nestjs.com/
+
+* **TypeScript** - Linguagem utilizada no desenvolvimento.
+
+  * https://www.typescriptlang.org/docs/
+
+* **MongoDB Atlas** - Banco de dados NoSQL utilizado para armazenar as tarefas.
+
+  * https://www.mongodb.com/docs/atlas/
+
+* **Mongoose** - ODM utilizado para integração entre NestJS e MongoDB.
+
+  * https://mongoosejs.com/docs/
+
+* **class-validator** - Biblioteca utilizada para validação dos dados recebidos pela API.
+
+  * https://github.com/typestack/class-validator
+
+* **Swagger (OpenAPI)** - Documentação interativa da API.
+
+  * https://docs.nestjs.com/openapi/introduction
+
+---
+
+# Funcionalidades
+
+A API permite:
+
+* Criar uma nova tarefa;
+* Listar todas as tarefas cadastradas;
+* Buscar uma tarefa pelo seu ID;
+* Atualizar uma tarefa existente;
+* Remover uma tarefa do banco de dados;
+* Validar os dados enviados nas requisições;
+* Documentar automaticamente todos os endpoints utilizando Swagger.
+
+---
+
+# Como executar o projeto
+
+## Pré-requisitos
+
+Antes de iniciar o projeto é necessário possuir instalado:
+
+* Node.js (versão 22 ou superior)
+* pnpm
+* Uma conta no MongoDB Atlas
+
+---
+
+## 1. Clonar o repositório
 
 ```bash
-$ pnpm install
+git clone https://github.com/wiclok/VoejaTesteBackend.git
 ```
 
-## Compile and run the project
+Entrar na pasta do projeto:
 
 ```bash
-# development
-$ pnpm run start
-
-# watch mode
-$ pnpm run start:dev
-
-# production mode
-$ pnpm run start:prod
+cd voeja-teste-backend
 ```
 
-## Run tests
+---
+
+## 2. Instalar as dependências
 
 ```bash
-# unit tests
-$ pnpm run test
-
-# e2e tests
-$ pnpm run test:e2e
-
-# test coverage
-$ pnpm run test:cov
+pnpm install
 ```
 
-## Deployment
+---
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+## 3. Configurar as variáveis de ambiente
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+Crie um arquivo `.env` na raiz do projeto utilizando o arquivo `.env.example` como referência.
+
+Exemplo:
+
+```env
+MONGODB_URI=sua_string_de_conexao
+PORT=3000
+```
+
+> **Observação:** é necessário utilizar uma conexão válida do MongoDB Atlas.
+
+---
+
+## 4. Executar a aplicação
+
+Modo desenvolvimento:
 
 ```bash
-$ pnpm install -g @nestjs/mau
-$ mau deploy
+pnpm start:dev
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+Modo produção:
 
-## Resources
+```bash
+pnpm build
+pnpm start:prod
+```
 
-Check out a few resources that may come in handy when working with NestJS:
+A aplicação estará disponível em:
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+```text
+http://localhost:3000
+```
 
-## Support
+---
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+# Documentação da API
 
-## Stay in touch
+Após iniciar a aplicação, a documentação poderá ser acessada em:
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+```text
+http://localhost:3000/api
+```
 
-## License
+A documentação foi gerada utilizando Swagger e permite visualizar todos os endpoints, modelos de dados e realizar testes diretamente pelo navegador.
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+---
+
+# Endpoints
+
+## Criar tarefa
+
+**POST** `/tasks`
+
+### Request
+
+```json
+{
+  "title": "Comprar leite",
+  "description": "Ir ao supermercado comprar leite e pão.",
+  "status": "pendente"
+}
+```
+
+### Response (201)
+
+```json
+{
+  "_id": "687b8cb8e457692949777c11",
+  "title": "Comprar leite",
+  "description": "Ir ao supermercado comprar leite e pão.",
+  "status": "pendente",
+  "createdAt": "2026-07-19T14:12:43.105Z",
+  "updatedAt": "2026-07-19T14:12:43.105Z",
+  "__v": 0
+}
+```
+
+---
+
+## Listar tarefas
+
+**GET** `/tasks`
+
+### Response (200)
+
+```json
+[
+  {
+    "_id": "687b8cb8e457692949777c11",
+    "title": "Comprar leite",
+    "description": "Ir ao supermercado comprar leite e pão.",
+    "status": "pendente",
+    "createdAt": "2026-07-19T14:12:43.105Z",
+    "updatedAt": "2026-07-19T14:12:43.105Z",
+    "__v": 0
+  }
+]
+```
+
+---
+
+## Buscar tarefa por ID
+
+**GET** `/tasks/{id}`
+
+### Response (200)
+
+```json
+{
+  "_id": "687b8cb8e457692949777c11",
+  "title": "Comprar leite",
+  "description": "Ir ao supermercado comprar leite e pão.",
+  "status": "pendente",
+  "createdAt": "2026-07-19T14:12:43.105Z",
+  "updatedAt": "2026-07-19T14:12:43.105Z",
+  "__v": 0
+}
+```
+
+---
+
+## Atualizar tarefa
+
+**PUT** `/tasks/{id}`
+
+### Request
+
+```json
+{
+  "title": "Comprar frutas",
+  "description": "Comprar frutas para a semana.",
+  "status": "concluida"
+}
+```
+
+### Response (200)
+
+```json
+{
+  "_id": "687b8cb8e457692949777c11",
+  "title": "Comprar frutas",
+  "description": "Comprar frutas para a semana.",
+  "status": "concluida",
+  "createdAt": "2026-07-19T14:12:43.105Z",
+  "updatedAt": "2026-07-19T15:30:20.245Z",
+  "__v": 0
+}
+```
+
+---
+
+## Remover tarefa
+
+**DELETE** `/tasks/{id}`
+
+### Response (200)
+
+```json
+{
+  "_id": "687b8cb8e457692949777c11",
+  "title": "Comprar frutas",
+  "description": "Comprar frutas para a semana.",
+  "status": "concluida",
+  "createdAt": "2026-07-19T14:12:43.105Z",
+  "updatedAt": "2026-07-19T15:30:20.245Z",
+  "__v": 0
+}
+```
+
+---
+
+# Estrutura do projeto
+
+```text
+src/
+├── tasks/
+│   ├── dto/
+│   ├── enums/
+│   ├── schemas/
+│   ├── tasks.controller.ts
+│   ├── tasks.service.ts
+│   └── tasks.module.ts
+├── app.module.ts
+└── main.ts
+```
+
+---
+
+# Autor
+
+**Brian Cespedes**
+
+Desenvolvido como parte do processo seletivo da **VOEJA Tech**.
